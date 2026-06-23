@@ -33,6 +33,9 @@ const CV_MAP: Record<string, string> = {
   "Mar Medall González": cvMedall.url,
   "M.C. Aparisi": cvAparisi.url,
   "Matilde Castellano": cvCastellanos.url,
+  "Pascual Hernández": cvPascual.url,
+  "Sandra Salvat": cvSandra.url,
+  "Xavi Moisés": cvXavi.url,
 };
 
 export const Route = createFileRoute("/")({
