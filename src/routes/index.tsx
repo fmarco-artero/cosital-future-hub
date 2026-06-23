@@ -2,8 +2,35 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   Clock, MapPin, Calendar, Users, GraduationCap, Brain, ShieldCheck,
-  Scale, FileText, Building2, LineChart, Sparkles, Target, ArrowRight,
+  Scale, FileText, Building2, LineChart, Sparkles, Target, ArrowRight, FileText as FileIcon,
 } from "lucide-react";
+
+// CVs de ponentes (PDFs servidos por CDN)
+import cvMinguillon from "@/assets/cv/CV_Oxford_Antonio_Minguillon.pdf.asset.json";
+import cvMontes from "@/assets/cv/CV_Oxford_Beatriz_Montes.pdf.asset.json";
+import cvMonserrat from "@/assets/cv/CV_Oxford_Carmen_Monserrat.pdf.asset.json";
+import cvRequejo from "@/assets/cv/CV_Oxford_Javier_Requejo.pdf.asset.json";
+import cvChicano from "@/assets/cv/CV_Oxford_Jose_Chicano.pdf.asset.json";
+import cvClaudio from "@/assets/cv/CV_Oxford_Jose_Claudio.pdf.asset.json";
+import cvManel from "@/assets/cv/CV_Oxford_Manel_Perez.pdf.asset.json";
+import cvMedall from "@/assets/cv/CV_Oxford_Mar_Medall-2.pdf.asset.json";
+import cvAparisi from "@/assets/cv/CV_Oxford_MariCarmen_Aparisi.pdf.asset.json";
+import cvCastellanos from "@/assets/cv/CV_Oxford_Matilde_Castellanos.pdf.asset.json";
+
+// Mapeo nombre → URL del CV. Añade nuevas entradas aquí cuando incorpores ponentes.
+const CV_MAP: Record<string, string> = {
+  "Antonio Minguillón": cvMinguillon.url,
+  "Beatriz Montes": cvMontes.url,
+  "Carmen Monserrat": cvMonserrat.url,
+  "Javier Requejo": cvRequejo.url,
+  "Jose F. Chicano": cvChicano.url,
+  "José Claudio Álvarez Villazón": cvClaudio.url,
+  "Manel Pérez": cvManel.url,
+  "Mar Medall": cvMedall.url,
+  "Mar Medall González": cvMedall.url,
+  "M.C. Aparisi": cvAparisi.url,
+  "Matilde Castellano": cvCastellanos.url,
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -345,17 +372,26 @@ function SesionItem({ sesion, color }: { sesion: Sesion; color: string }) {
         <h4 className="font-semibold leading-snug text-white">{sesion.titulo}</h4>
         {sesion.ponentes && (
           <div className="mt-3 space-y-1.5">
-            {sesion.ponentes.map((p) => (
-              <div key={p.nombre} className="flex items-center gap-2 text-sm">
-                <div className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--magenta)] to-[var(--blue-light)] text-[10px] font-bold text-white">
-                  {initials(p.nombre)}
+            {sesion.ponentes.map((p) => {
+              const cv = CV_MAP[p.nombre];
+              const NameTag: any = cv ? "a" : "span";
+              return (
+                <div key={p.nombre} className="flex items-center gap-2 text-sm">
+                  <div className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--magenta)] to-[var(--blue-light)] text-[10px] font-bold text-white">
+                    {initials(p.nombre)}
+                  </div>
+                  <div className="min-w-0">
+                    <NameTag
+                      {...(cv ? { href: cv, target: "_blank", rel: "noopener noreferrer" } : {})}
+                      className={`font-medium text-white ${cv ? "underline decoration-[var(--magenta-soft)]/40 underline-offset-4 hover:decoration-[var(--magenta-soft)]" : ""}`}
+                    >
+                      {p.nombre}
+                    </NameTag>
+                    <span className="text-white/55"> · {p.cargo}</span>
+                  </div>
                 </div>
-                <div className="min-w-0">
-                  <span className="font-medium text-white">{p.nombre}</span>
-                  <span className="text-white/55"> · {p.cargo}</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
@@ -394,35 +430,60 @@ function Ponentes() {
         <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--magenta-soft)]">Ponentes</div>
         <h2 className="mb-12 text-4xl font-bold text-white md:text-5xl">Profesionales de referencia</h2>
 
-        {direccion && (
-          <div className="mb-12 rounded-3xl border border-[var(--magenta)]/40 bg-gradient-to-br from-[var(--magenta)]/15 to-transparent p-8">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[var(--magenta)]/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--magenta-soft)]">
-              <GraduationCap className="h-3.5 w-3.5" /> Dirección académica
-            </div>
-            <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center">
-              <div className="grid h-20 w-20 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--magenta)] to-[var(--blue-light)] text-2xl font-bold text-white">
-                {initials(direccion.nombre)}
+        {direccion && (() => {
+          const cv = CV_MAP[direccion.nombre];
+          const Wrapper: any = cv ? "a" : "div";
+          return (
+            <Wrapper
+              {...(cv ? { href: cv, target: "_blank", rel: "noopener noreferrer" } : {})}
+              className={`mb-12 block rounded-3xl border border-[var(--magenta)]/40 bg-gradient-to-br from-[var(--magenta)]/15 to-transparent p-8 transition ${cv ? "hover:border-[var(--magenta)]/70 hover:bg-[var(--magenta)]/20" : ""}`}
+            >
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[var(--magenta)]/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--magenta-soft)]">
+                <GraduationCap className="h-3.5 w-3.5" /> Dirección académica
               </div>
-              <div className="min-w-0">
-                <div className="text-2xl font-semibold text-white">{direccion.nombre}</div>
-                <div className="mt-1 text-white/65">{direccion.cargo}</div>
+              <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+                <div className="grid h-20 w-20 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--magenta)] to-[var(--blue-light)] text-2xl font-bold text-white">
+                  {initials(direccion.nombre)}
+                </div>
+                <div className="min-w-0">
+                  <div className="text-2xl font-semibold text-white">{direccion.nombre}</div>
+                  <div className="mt-1 text-white/65">{direccion.cargo}</div>
+                  {cv && (
+                    <div className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-[var(--magenta-soft)]">
+                      <FileIcon className="h-3.5 w-3.5" /> Ver currículum (PDF)
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          </div>
-        )}
+            </Wrapper>
+          );
+        })()}
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {resto.map((p) => (
-            <div key={p.nombre} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-white/20 hover:bg-white/[0.06]">
-              <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--blue-light)] to-[var(--magenta)] text-sm font-bold text-white">
-                {initials(p.nombre)}
-              </div>
-              <div className="min-w-0">
-                <div className="font-semibold text-white">{p.nombre}</div>
-                <div className="mt-0.5 text-sm leading-snug text-white/60">{p.cargo}</div>
-              </div>
-            </div>
-          ))}
+          {resto.map((p) => {
+            const cv = CV_MAP[p.nombre];
+            const Card: any = cv ? "a" : "div";
+            return (
+              <Card
+                key={p.nombre}
+                {...(cv ? { href: cv, target: "_blank", rel: "noopener noreferrer" } : {})}
+                className={`flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-white/20 hover:bg-white/[0.06] ${cv ? "cursor-pointer hover:border-[var(--magenta)]/40" : ""}`}
+              >
+                <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--blue-light)] to-[var(--magenta)] text-sm font-bold text-white">
+                  {initials(p.nombre)}
+                </div>
+                <div className="min-w-0">
+                  <div className="font-semibold text-white">{p.nombre}</div>
+                  <div className="mt-0.5 text-sm leading-snug text-white/60">{p.cargo}</div>
+                  {cv && (
+                    <div className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-[var(--magenta-soft)]">
+                      <FileIcon className="h-3 w-3" /> Ver CV (PDF)
+                    </div>
+                  )}
+                </div>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
