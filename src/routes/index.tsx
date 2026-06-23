@@ -2,8 +2,35 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   Clock, MapPin, Calendar, Users, GraduationCap, Brain, ShieldCheck,
-  Scale, FileText, Building2, LineChart, Sparkles, Target, ArrowRight,
+  Scale, FileText, Building2, LineChart, Sparkles, Target, ArrowRight, FileText as FileIcon,
 } from "lucide-react";
+
+// CVs de ponentes (PDFs servidos por CDN)
+import cvMinguillon from "@/assets/cv/CV_Oxford_Antonio_Minguillon.pdf.asset.json";
+import cvMontes from "@/assets/cv/CV_Oxford_Beatriz_Montes.pdf.asset.json";
+import cvMonserrat from "@/assets/cv/CV_Oxford_Carmen_Monserrat.pdf.asset.json";
+import cvRequejo from "@/assets/cv/CV_Oxford_Javier_Requejo.pdf.asset.json";
+import cvChicano from "@/assets/cv/CV_Oxford_Jose_Chicano.pdf.asset.json";
+import cvClaudio from "@/assets/cv/CV_Oxford_Jose_Claudio.pdf.asset.json";
+import cvManel from "@/assets/cv/CV_Oxford_Manel_Perez.pdf.asset.json";
+import cvMedall from "@/assets/cv/CV_Oxford_Mar_Medall-2.pdf.asset.json";
+import cvAparisi from "@/assets/cv/CV_Oxford_MariCarmen_Aparisi.pdf.asset.json";
+import cvCastellanos from "@/assets/cv/CV_Oxford_Matilde_Castellanos.pdf.asset.json";
+
+// Mapeo nombre → URL del CV. Añade nuevas entradas aquí cuando incorpores ponentes.
+const CV_MAP: Record<string, string> = {
+  "Antonio Minguillón": cvMinguillon.url,
+  "Beatriz Montes": cvMontes.url,
+  "Carmen Monserrat": cvMonserrat.url,
+  "Javier Requejo": cvRequejo.url,
+  "Jose F. Chicano": cvChicano.url,
+  "José Claudio Álvarez Villazón": cvClaudio.url,
+  "Manel Pérez": cvManel.url,
+  "Mar Medall": cvMedall.url,
+  "Mar Medall González": cvMedall.url,
+  "M.C. Aparisi": cvAparisi.url,
+  "Matilde Castellano": cvCastellanos.url,
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
