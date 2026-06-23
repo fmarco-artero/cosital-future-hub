@@ -16,6 +16,9 @@ import cvManel from "@/assets/cv/CV_Oxford_Manel_Perez.pdf.asset.json";
 import cvMedall from "@/assets/cv/CV_Oxford_Mar_Medall-2.pdf.asset.json";
 import cvAparisi from "@/assets/cv/CV_Oxford_MariCarmen_Aparisi.pdf.asset.json";
 import cvCastellanos from "@/assets/cv/CV_Oxford_Matilde_Castellanos.pdf.asset.json";
+import cvPascual from "@/assets/cv/CV_Oxford_Pascual_Hernandez.pdf.asset.json";
+import cvSandra from "@/assets/cv/CV_Oxford_Sandra_Salvat.pdf.asset.json";
+import cvXavi from "@/assets/cv/CV_Oxford_Xavi_Moises.pdf.asset.json";
 
 // Mapeo nombre → URL del CV. Añade nuevas entradas aquí cuando incorpores ponentes.
 const CV_MAP: Record<string, string> = {
