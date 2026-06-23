@@ -430,22 +430,34 @@ function Ponentes() {
         <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--magenta-soft)]">Ponentes</div>
         <h2 className="mb-12 text-4xl font-bold text-white md:text-5xl">Profesionales de referencia</h2>
 
-        {direccion && (
-          <div className="mb-12 rounded-3xl border border-[var(--magenta)]/40 bg-gradient-to-br from-[var(--magenta)]/15 to-transparent p-8">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[var(--magenta)]/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--magenta-soft)]">
-              <GraduationCap className="h-3.5 w-3.5" /> Dirección académica
-            </div>
-            <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center">
-              <div className="grid h-20 w-20 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--magenta)] to-[var(--blue-light)] text-2xl font-bold text-white">
-                {initials(direccion.nombre)}
+        {direccion && (() => {
+          const cv = CV_MAP[direccion.nombre];
+          const Wrapper: any = cv ? "a" : "div";
+          return (
+            <Wrapper
+              {...(cv ? { href: cv, target: "_blank", rel: "noopener noreferrer" } : {})}
+              className={`mb-12 block rounded-3xl border border-[var(--magenta)]/40 bg-gradient-to-br from-[var(--magenta)]/15 to-transparent p-8 transition ${cv ? "hover:border-[var(--magenta)]/70 hover:bg-[var(--magenta)]/20" : ""}`}
+            >
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[var(--magenta)]/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--magenta-soft)]">
+                <GraduationCap className="h-3.5 w-3.5" /> Dirección académica
               </div>
-              <div className="min-w-0">
-                <div className="text-2xl font-semibold text-white">{direccion.nombre}</div>
-                <div className="mt-1 text-white/65">{direccion.cargo}</div>
+              <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+                <div className="grid h-20 w-20 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--magenta)] to-[var(--blue-light)] text-2xl font-bold text-white">
+                  {initials(direccion.nombre)}
+                </div>
+                <div className="min-w-0">
+                  <div className="text-2xl font-semibold text-white">{direccion.nombre}</div>
+                  <div className="mt-1 text-white/65">{direccion.cargo}</div>
+                  {cv && (
+                    <div className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-[var(--magenta-soft)]">
+                      <FileIcon className="h-3.5 w-3.5" /> Ver currículum (PDF)
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          </div>
-        )}
+            </Wrapper>
+          );
+        })()}
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {resto.map((p) => (
