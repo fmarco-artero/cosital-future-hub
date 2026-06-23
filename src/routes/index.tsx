@@ -460,17 +460,30 @@ function Ponentes() {
         })()}
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {resto.map((p) => (
-            <div key={p.nombre} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-white/20 hover:bg-white/[0.06]">
-              <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--blue-light)] to-[var(--magenta)] text-sm font-bold text-white">
-                {initials(p.nombre)}
-              </div>
-              <div className="min-w-0">
-                <div className="font-semibold text-white">{p.nombre}</div>
-                <div className="mt-0.5 text-sm leading-snug text-white/60">{p.cargo}</div>
-              </div>
-            </div>
-          ))}
+          {resto.map((p) => {
+            const cv = CV_MAP[p.nombre];
+            const Card: any = cv ? "a" : "div";
+            return (
+              <Card
+                key={p.nombre}
+                {...(cv ? { href: cv, target: "_blank", rel: "noopener noreferrer" } : {})}
+                className={`flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-white/20 hover:bg-white/[0.06] ${cv ? "cursor-pointer hover:border-[var(--magenta)]/40" : ""}`}
+              >
+                <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--blue-light)] to-[var(--magenta)] text-sm font-bold text-white">
+                  {initials(p.nombre)}
+                </div>
+                <div className="min-w-0">
+                  <div className="font-semibold text-white">{p.nombre}</div>
+                  <div className="mt-0.5 text-sm leading-snug text-white/60">{p.cargo}</div>
+                  {cv && (
+                    <div className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-[var(--magenta-soft)]">
+                      <FileIcon className="h-3 w-3" /> Ver CV (PDF)
+                    </div>
+                  )}
+                </div>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
