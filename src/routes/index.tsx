@@ -372,17 +372,26 @@ function SesionItem({ sesion, color }: { sesion: Sesion; color: string }) {
         <h4 className="font-semibold leading-snug text-white">{sesion.titulo}</h4>
         {sesion.ponentes && (
           <div className="mt-3 space-y-1.5">
-            {sesion.ponentes.map((p) => (
-              <div key={p.nombre} className="flex items-center gap-2 text-sm">
-                <div className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--magenta)] to-[var(--blue-light)] text-[10px] font-bold text-white">
-                  {initials(p.nombre)}
+            {sesion.ponentes.map((p) => {
+              const cv = CV_MAP[p.nombre];
+              const NameTag: any = cv ? "a" : "span";
+              return (
+                <div key={p.nombre} className="flex items-center gap-2 text-sm">
+                  <div className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--magenta)] to-[var(--blue-light)] text-[10px] font-bold text-white">
+                    {initials(p.nombre)}
+                  </div>
+                  <div className="min-w-0">
+                    <NameTag
+                      {...(cv ? { href: cv, target: "_blank", rel: "noopener noreferrer" } : {})}
+                      className={`font-medium text-white ${cv ? "underline decoration-[var(--magenta-soft)]/40 underline-offset-4 hover:decoration-[var(--magenta-soft)]" : ""}`}
+                    >
+                      {p.nombre}
+                    </NameTag>
+                    <span className="text-white/55"> · {p.cargo}</span>
+                  </div>
                 </div>
-                <div className="min-w-0">
-                  <span className="font-medium text-white">{p.nombre}</span>
-                  <span className="text-white/55"> · {p.cargo}</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
