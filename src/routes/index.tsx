@@ -19,6 +19,7 @@ import cvCastellanos from "@/assets/cv/CV_Oxford_Matilde_Castellanos.pdf.asset.j
 import cvPascual from "@/assets/cv/CV_Oxford_Pascual_Hernandez.pdf.asset.json";
 import cvSandra from "@/assets/cv/CV_Oxford_Sandra_Salvat.pdf.asset.json";
 import cvXavi from "@/assets/cv/CV_Oxford_Xavi_Moises.pdf.asset.json";
+import cvRocio from "@/assets/cv/CV_Oxford_Rocio_Arteaga.pdf.asset.json";
 
 // Mapeo nombre → URL del CV. Añade nuevas entradas aquí cuando incorpores ponentes.
 const CV_MAP: Record<string, string> = {
@@ -36,6 +37,8 @@ const CV_MAP: Record<string, string> = {
   "Pascual Hernández": cvPascual.url,
   "Sandra Salvat": cvSandra.url,
   "Xavi Moisés": cvXavi.url,
+  "Rocío Arteaga": cvRocio.url,
+  "Rocio Arteaga": cvRocio.url,
 };
 
 export const Route = createFileRoute("/")({
