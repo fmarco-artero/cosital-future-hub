@@ -40,8 +40,6 @@ const CV_MAP: Record<string, string> = {
   "Rocío Arteaga": cvRocio.url,
   "Rocio Arteaga": cvRocio.url,
 };
-const _dup = {
-};
 
 export const Route = createFileRoute("/")({
   head: () => ({
