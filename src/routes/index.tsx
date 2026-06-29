@@ -3,6 +3,7 @@ import { useState } from "react";
 import {
   Clock, MapPin, Calendar, Users, GraduationCap, Brain, ShieldCheck,
   Scale, FileText, Building2, LineChart, Sparkles, Target, ArrowRight, FileText as FileIcon,
+  Mail, Phone,
 } from "lucide-react";
 
 // CVs de ponentes (PDFs servidos por CDN)
