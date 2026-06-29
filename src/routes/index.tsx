@@ -527,20 +527,12 @@ function Footer() {
       <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-3">
         <div>
           <div className="mb-2 text-sm font-semibold text-white">Organiza</div>
-          <div className="flex items-center gap-2">
-            <div className="grid h-9 w-9 place-items-center rounded-md bg-gradient-to-br from-[var(--magenta)] to-[var(--blue-light)] text-sm font-bold text-white">C</div>
-            <span className="font-semibold text-white">COSITAL Castelló</span>
-          </div>
+          <span className="font-semibold text-white">COSITAL Castelló</span>
           <p className="mt-3 text-sm text-white/55">Col·legi de Secretaris, Interventors i Tresorers d'Administració Local.</p>
         </div>
         <div>
           <div className="mb-2 text-sm font-semibold text-white">Colabora</div>
-          <div className="flex items-center gap-2">
-            <div className="grid h-9 w-9 place-items-center rounded-md bg-gradient-to-br from-[var(--blue-light)] to-[var(--magenta)] text-sm font-bold text-white">
-              <Building2 className="h-5 w-5" />
-            </div>
-            <span className="font-semibold text-white">Generalitat Valenciana</span>
-          </div>
+          <span className="font-semibold text-white">Generalitat Valenciana</span>
           <p className="mt-3 text-sm text-white/55">Administració de la Comunitat Valenciana.</p>
         </div>
         <div className="text-sm text-white/60">
