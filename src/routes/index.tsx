@@ -209,11 +209,6 @@ function Hero() {
     <section id="inicio" className="bg-network relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 py-20 md:py-32">
         <div className="mb-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs uppercase tracking-[0.18em] text-white/60">
-          <span>COSITAL Castelló</span>
-          <span className="h-1 w-1 rounded-full bg-white/30" />
-          <span>El Planetari</span>
-          <span className="h-1 w-1 rounded-full bg-white/30" />
-          <span>Generalitat Valenciana</span>
         </div>
 
         <div className="max-w-4xl">
