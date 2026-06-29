@@ -44,6 +44,9 @@ const CV_MAP: Record<string, string> = {
 // URL del formulario de inscripción. Actualiza aquí si cambia el enlace.
 const INSCRIPCION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeJKJSgYRP4S-P-TUUL2yJpKpIGOvRv1H0dCQ_G56n7B1L5nA/viewform";
 
+// URL del lugar de celebración del curso (El Planetari de Castelló).
+const LUGAR_URL = "https://www.castello.es/va/web/guest/planetari-informacio-general";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
