@@ -44,6 +44,9 @@ const CV_MAP: Record<string, string> = {
 // URL del formulario de inscripción. Actualiza aquí si cambia el enlace.
 const INSCRIPCION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeJKJSgYRP4S-P-TUUL2yJpKpIGOvRv1H0dCQ_G56n7B1L5nA/viewform";
 
+// URL del lugar de celebración del curso (El Planetari de Castelló).
+const LUGAR_URL = "https://www.castello.es/va/web/guest/planetari-informacio-general";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -231,7 +234,9 @@ function Hero() {
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 md:max-w-2xl">
             <InfoChip icon={Calendar} title="Fechas" text="17, 18, 24, 25 sept · 2 oct 2026" />
-            <InfoChip icon={MapPin} title="Lugar" text="El Planetari · Passeig Marítim 1, Castelló" />
+            <a href={LUGAR_URL} target="_blank" rel="noopener noreferrer" className="block transition hover:opacity-90">
+              <InfoChip icon={MapPin} title="Lugar" text="El Planetari · Passeig Marítim 1, Castelló" />
+            </a>
           </div>
 
           <div className="mt-10 flex flex-wrap gap-3">
@@ -542,9 +547,11 @@ function Footer() {
         </div>
         <div className="text-sm text-white/60">
           <div className="mb-2 font-semibold text-white">Sede</div>
-          El Planetari<br />
-          Passeig Marítim, 1<br />
-          12100 Castelló de la Plana
+          <a href={LUGAR_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white/80">
+            El Planetari<br />
+            Passeig Marítim, 1<br />
+            12100 Castelló de la Plana
+          </a>
         </div>
       </div>
       <div className="mx-auto mt-10 max-w-7xl border-t border-white/5 px-6 pt-6 text-center text-xs text-white/35">
