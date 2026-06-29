@@ -208,9 +208,6 @@ function Hero() {
   return (
     <section id="inicio" className="bg-network relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 py-20 md:py-32">
-        <div className="mb-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs uppercase tracking-[0.18em] text-white/60">
-        </div>
-
         <div className="max-w-4xl">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80">
             <Sparkles className="h-3.5 w-3.5 text-[var(--magenta-soft)]" /> Curso especializado · Edición 2026
