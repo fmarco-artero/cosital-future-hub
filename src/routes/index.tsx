@@ -194,7 +194,7 @@ function Nav() {
           <a href="#programa" className="hover:text-white">Programa</a>
           <a href="#ponentes" className="hover:text-white">Ponentes</a>
           <a href="#objetivos" className="hover:text-white">Objetivos</a>
-          <a href="#inscripcion" className="rounded-full bg-[var(--magenta)] px-4 py-1.5 font-medium text-white hover:opacity-90">Inscripción</a>
+          <a href={INSCRIPCION_URL} target="_blank" rel="noopener noreferrer" className="rounded-full bg-[var(--magenta)] px-4 py-1.5 font-medium text-white hover:opacity-90">Inscripción</a>
         </nav>
       </div>
     </header>
@@ -239,7 +239,7 @@ function Hero() {
               Ver programa completo
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
             </a>
-            <a href="#inscripcion" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 font-medium text-white hover:bg-white/10">
+            <a href={INSCRIPCION_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 font-medium text-white hover:bg-white/10">
               Inscripción
             </a>
           </div>
@@ -512,10 +512,10 @@ function Inscripcion() {
           17, 18, 24, 25 de septiembre y 2 de octubre de 2026 · El Planetari, Castelló.
           Plazas limitadas.
         </p>
-        <button className="mt-10 inline-flex items-center gap-2 rounded-full bg-[var(--magenta)] px-8 py-4 text-base font-semibold text-white shadow-[0_15px_50px_-10px_oklch(0.52_0.18_0/0.7)] transition hover:scale-[1.02]">
+        <a href={INSCRIPCION_URL} target="_blank" rel="noopener noreferrer" className="mt-10 inline-flex items-center gap-2 rounded-full bg-[var(--magenta)] px-8 py-4 text-base font-semibold text-white shadow-[0_15px_50px_-10px_oklch(0.52_0.18_0/0.7)] transition hover:scale-[1.02]">
           Solicitar inscripción
           <ArrowRight className="h-4 w-4" />
-        </button>
+        </a>
         <p className="mx-auto mt-6 max-w-xl text-sm text-white/50">
           Dirigido a personal funcionario con habilitación de carácter nacional, interventores/as, secretarios/as-interventores/as, tesoreros/as y técnicos de control interno, auditoría y contratación.
         </p>
