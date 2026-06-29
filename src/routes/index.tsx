@@ -41,6 +41,9 @@ const CV_MAP: Record<string, string> = {
   "Rocio Arteaga": cvRocio.url,
 };
 
+// URL del formulario de inscripción. Actualiza aquí si cambia el enlace.
+const INSCRIPCION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeJKJSgYRP4S-P-TUUL2yJpKpIGOvRv1H0dCQ_G56n7B1L5nA/viewform";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
