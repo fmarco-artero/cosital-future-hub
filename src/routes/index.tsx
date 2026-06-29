@@ -3,6 +3,7 @@ import { useState } from "react";
 import {
   Clock, MapPin, Calendar, Users, GraduationCap, Brain, ShieldCheck,
   Scale, FileText, Building2, LineChart, Sparkles, Target, ArrowRight, FileText as FileIcon,
+  Mail, Phone,
 } from "lucide-react";
 
 // CVs de ponentes (PDFs servidos por CDN)
@@ -529,6 +530,16 @@ function Footer() {
           <div className="mb-2 text-sm font-semibold text-white">Organiza</div>
           <span className="font-semibold text-white">COSITAL Castelló</span>
           <p className="mt-3 text-sm text-white/55">Col·legi de Secretaris, Interventors i Tresorers d'Administració Local.</p>
+          <div className="mt-4 space-y-2 text-sm text-white/70">
+            <a href="mailto:secretaria@cositalcastellon.es" className="flex items-center gap-2 hover:text-white">
+              <Mail className="h-4 w-4 shrink-0 text-[var(--blue-light)]" />
+              <span>secretaria@cositalcastellon.es</span>
+            </a>
+            <a href="tel:+34964211776" className="flex items-center gap-2 hover:text-white">
+              <Phone className="h-4 w-4 shrink-0 text-[var(--blue-light)]" />
+              <span>964 211 776 | L/V de 09 h a 14 h y 17 h a 20 h</span>
+            </a>
+          </div>
         </div>
         <div>
           <div className="mb-2 text-sm font-semibold text-white">Colabora</div>
