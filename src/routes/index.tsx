@@ -21,6 +21,7 @@ import cvPascual from "@/assets/cv/CV_Oxford_Pascual_Hernandez.pdf.asset.json";
 import cvSandra from "@/assets/cv/CV_Oxford_Sandra_Salvat.pdf.asset.json";
 import cvXavi from "@/assets/cv/CV_Oxford_Xavi_Moises.pdf.asset.json";
 import cvRocio from "@/assets/cv/CV_Oxford_Rocio_Arteaga.pdf.asset.json";
+import cvMagda from "@/assets/cv/CV_Oxford_Magda_Gomez.pdf.asset.json";
 
 // Mapeo nombre → URL del CV. Añade nuevas entradas aquí cuando incorpores ponentes.
 const CV_MAP: Record<string, string> = {
@@ -40,6 +41,8 @@ const CV_MAP: Record<string, string> = {
   "Xavi Moisés": cvXavi.url,
   "Rocío Arteaga": cvRocio.url,
   "Rocio Arteaga": cvRocio.url,
+  "Magda Gómez": cvMagda.url,
+  "Magda Gómez Marrasé": cvMagda.url,
 };
 
 // URL del formulario de inscripción. Actualiza aquí si cambia el enlace.
@@ -88,8 +91,8 @@ const JORNADAS: Jornada[] = [
     sesiones: [
       { hora: "9:00–10:30", titulo: "Más allá del presupuesto: control de las concesiones, el patrimonio y el urbanismo en las entidades locales", ponentes: [{ nombre: "Javier Requejo", cargo: "Viceinterventor General · Ayuntamiento de Tarragona" }] },
       { hora: "10:30–11:00", titulo: "Pausa desayuno", pausa: true },
-      { hora: "11:00–12:30", titulo: "Control financiero e inteligencia artificial: una herramienta para trabajar mejor", ponentes: [{ nombre: "Rocío Arteaga", cargo: "Interventora Adjunta · Diputación de Málaga" }] },
-      { hora: "12:30–14:30", titulo: "Los riesgos de la mala utilización de la IA", ponentes: [{ nombre: "Matilde Castellano", cargo: "Viceinterventora General · Junta de Comunidades de Castilla-La Mancha" }] },
+      { hora: "11:00–12:30", titulo: "Los riesgos de la mala utilización de la IA", ponentes: [{ nombre: "Matilde Castellano", cargo: "Viceinterventora General · Junta de Comunidades de Castilla-La Mancha" }] },
+      { hora: "12:30–14:30", titulo: "Control financiero e inteligencia artificial: una herramienta para trabajar mejor", ponentes: [{ nombre: "Rocío Arteaga", cargo: "Interventora Adjunta · Diputación de Málaga" }] },
     ],
   },
   {
@@ -111,7 +114,8 @@ const JORNADAS: Jornada[] = [
         { nombre: "Beatriz Montes", cargo: "Interventora y Auditora · Generalitat Valenciana" },
       ]},
       { hora: "11:00–11:30", titulo: "Pausa desayuno", pausa: true },
-      { hora: "11:30–14:30", titulo: "IA, gestión de riesgos y nuevas tecnologías en control", ponentes: [{ nombre: "Javier Requejo", cargo: "Viceinterventor General · Ayuntamiento de Tarragona" }] },
+      { hora: "11:30–13:30", titulo: "IA, gestión de riesgos y nuevas tecnologías en control", ponentes: [{ nombre: "Javier Requejo", cargo: "Viceinterventor General · Ayuntamiento de Tarragona" }] },
+      { hora: "13:30–14:30", titulo: "Construcción del Informe de Control Permanente Planificado (régimen de control financiero) con la incorporación del modelo HITL (Human In the Loop)", ponentes: [{ nombre: "Magda Gómez", cargo: "Cap de Servei de Control Financer · Diputació de Tarragona" }] },
     ],
   },
   {
@@ -121,7 +125,7 @@ const JORNADAS: Jornada[] = [
       { hora: "9:00–10:30", titulo: "La gestión presupuestaria en un ambiente de control", ponentes: [{ nombre: "Pascual Hernández", cargo: "Director del Órgano de Gestión Presupuestaria y Contabilidad" }] },
       { hora: "10:30–11:00", titulo: "Pausa desayuno", pausa: true },
       { hora: "11:00–12:30", titulo: "Mejora tu estrateg-IA como interventor/a", ponentes: [{ nombre: "Carmen Monserrat", cargo: "Auditora de cuentas" }] },
-      { hora: "12:30–14:00", titulo: "Control externo sobre agentes de IA", ponentes: [{ nombre: "Antonio Minguillón", cargo: "Auditor Director · Gabinete Técnico Sindicatura" }] },
+      { hora: "12:30–14:00", titulo: "Los órganos de control externo y la auditoría de la IA Generativa", ponentes: [{ nombre: "Antonio Minguillón", cargo: "Auditor Director · Gabinete Técnico Sindicatura" }] },
       { hora: "14:00–14:15", titulo: "Clausura" },
     ],
   },
@@ -161,6 +165,7 @@ const PONENTES = [
   { nombre: "Pascual Hernández", cargo: "Director del Órgano de Gestión Presupuestaria y Contabilidad" },
   { nombre: "Carmen Monserrat", cargo: "Auditora de cuentas" },
   { nombre: "Antonio Minguillón", cargo: "Auditor Director · Gabinete Técnico Sindicatura" },
+  { nombre: "Magda Gómez", cargo: "Cap de Servei de Control Financer · Diputació de Tarragona" },
 ];
 
 function initials(name: string) {
