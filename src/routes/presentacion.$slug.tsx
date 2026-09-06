@@ -33,6 +33,19 @@ function PresentacionPage() {
   const [data, setData] = useState(initial);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [viewerSrc, setViewerSrc] = useState<string | null>(null);
+
+  const fileUrl = data.ok ? data.url : null;
+  useEffect(() => {
+    if (!fileUrl) {
+      setViewerSrc(null);
+      return;
+    }
+    const absolute = new URL(fileUrl, window.location.origin).toString();
+    setViewerSrc(
+      `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(absolute)}`,
+    );
+  }, [fileUrl]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
