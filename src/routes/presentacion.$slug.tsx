@@ -55,15 +55,44 @@ function PresentacionPage() {
               Presentación
             </h1>
             <p className="mt-3 text-white/70">{data.titulo}</p>
-            <a
-              href={data.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 font-medium transition hover:bg-white/20"
-            >
-              <Download className="h-4 w-4" />
-              Abrir / descargar la presentación
-            </a>
+
+            <div className="mt-6 aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-black/30">
+              {viewerSrc ? (
+                <iframe
+                  src={viewerSrc}
+                  title="Presentación"
+                  className="h-full w-full"
+                  allowFullScreen
+                />
+              ) : (
+                <div className="flex h-full items-center justify-center text-white/50">
+                  Cargando la presentación…
+                </div>
+              )}
+            </div>
+            <p className="mt-3 text-sm text-white/50">
+              Si la vista previa no carga, descarga el archivo para verlo en tu equipo.
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href={data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 font-medium transition hover:bg-white/20"
+              >
+                <MonitorPlay className="h-4 w-4" />
+                Abrir en otra pestaña
+              </a>
+              <a
+                href={data.url}
+                download
+                className="inline-flex items-center gap-2 rounded-full bg-white/90 px-6 py-3 font-medium text-[#0d2a4a] transition hover:bg-white"
+              >
+                <Download className="h-4 w-4" />
+                Descargar la presentación
+              </a>
+            </div>
           </>
         ) : (
           <>
