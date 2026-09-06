@@ -1,9 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   Clock, MapPin, Calendar, Users, GraduationCap, Brain, ShieldCheck,
   Scale, FileText, Building2, LineChart, Sparkles, Target, ArrowRight, FileText as FileIcon,
-  Mail, Phone,
+  Mail, Phone, MonitorPlay,
 } from "lucide-react";
 
 // CVs de ponentes (PDFs servidos por CDN)
@@ -22,6 +22,12 @@ import cvSandra from "@/assets/cv/CV_Oxford_Sandra_Salvat.pdf.asset.json";
 import cvXavi from "@/assets/cv/CV_Oxford_Xavi_Moises.pdf.asset.json";
 import cvRocio from "@/assets/cv/CV_Oxford_Rocio_Arteaga.pdf.asset.json";
 import cvMagda from "@/assets/cv/CV_Oxford_Magda_Gomez.pdf.asset.json";
+
+// Presentaciones protegidas por contraseña: nombre → slug de /presentacion/$slug
+// Añade aquí nuevas presentaciones (y su archivo en src/lib/presentacion.functions.ts)
+const PRESENTACION_MAP: Record<string, string> = {
+  "Jose F. Chicano": "jose-chicano",
+};
 
 // Mapeo nombre → URL del CV. Añade nuevas entradas aquí cuando incorpores ponentes.
 const CV_MAP: Record<string, string> = {
@@ -403,6 +409,19 @@ function SesionItem({ sesion, color }: { sesion: Sesion; color: string }) {
                       {p.nombre}
                     </NameTag>
                     <span className="text-white/55"> · {p.cargo}</span>
+                    {/* Presentación protegida por contraseña (ver PRESENTACION_MAP) */}
+                    {PRESENTACION_MAP[p.nombre] && (
+                      <Link
+                        to="/presentacion/$slug"
+                        params={{ slug: PRESENTACION_MAP[p.nombre] }}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ml-2 inline-flex items-center gap-1 rounded-full border border-[var(--blue-light)]/40 px-2 py-0.5 align-middle text-xs font-medium text-[var(--blue-light)] transition hover:bg-[var(--blue-light)]/10"
+                      >
+                        <MonitorPlay className="h-3.5 w-3.5" />
+                        Presentación
+                      </Link>
+                    )}
                   </div>
                 </div>
               );
