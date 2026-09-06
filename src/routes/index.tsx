@@ -403,6 +403,19 @@ function SesionItem({ sesion, color }: { sesion: Sesion; color: string }) {
                       {p.nombre}
                     </NameTag>
                     <span className="text-white/55"> · {p.cargo}</span>
+                    {/* Presentación protegida por contraseña (ver PRESENTACION_MAP) */}
+                    {PRESENTACION_MAP[p.nombre] && (
+                      <Link
+                        to="/presentacion/$slug"
+                        params={{ slug: PRESENTACION_MAP[p.nombre] }}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ml-2 inline-flex items-center gap-1 rounded-full border border-[var(--blue-light)]/40 px-2 py-0.5 align-middle text-xs font-medium text-[var(--blue-light)] transition hover:bg-[var(--blue-light)]/10"
+                      >
+                        <MonitorPlay className="h-3.5 w-3.5" />
+                        Presentación
+                      </Link>
+                    )}
                   </div>
                 </div>
               );
