@@ -22,6 +22,7 @@ import cvSandra from "@/assets/cv/CV_Oxford_Sandra_Salvat.pdf.asset.json";
 import cvXavi from "@/assets/cv/CV_Oxford_Xavi_Moises.pdf.asset.json";
 import cvRocio from "@/assets/cv/CV_Oxford_Rocio_Arteaga.pdf.asset.json";
 import cvMagda from "@/assets/cv/CV_Oxford_Magda_Gomez.pdf.asset.json";
+import programaPdf from "@/assets/programa/programa.pdf.asset.json";
 
 // Presentaciones protegidas por contraseña: nombre → slug de /presentacion/$slug
 // Añade aquí nuevas presentaciones (y su archivo en src/lib/presentacion.functions.ts)
@@ -206,7 +207,7 @@ function Nav() {
         </a>
         <nav className="hidden items-center gap-7 text-sm text-white/75 md:flex">
           <a href="#inicio" className="hover:text-white">Inicio</a>
-          <a href="#programa" className="hover:text-white">Programa</a>
+          <a href="#programa" className="hover:text-white">Planning</a>
           <a href="#ponentes" className="hover:text-white">Ponentes</a>
           <a href="#objetivos" className="hover:text-white">Objetivos</a>
           <a href={INSCRIPCION_URL} target="_blank" rel="noopener noreferrer" className="rounded-full bg-[var(--magenta)] px-4 py-1.5 font-medium text-white hover:opacity-90">Inscripción</a>
@@ -244,7 +245,7 @@ function Hero() {
           </div>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            <a href="#programa" className="group inline-flex items-center gap-2 rounded-full bg-[var(--magenta)] px-6 py-3 font-medium text-white shadow-[0_10px_40px_-10px_oklch(0.52_0.18_0/0.7)] transition hover:scale-[1.02]">
+            <a href={programaPdf.url} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 rounded-full bg-[var(--magenta)] px-6 py-3 font-medium text-white shadow-[0_10px_40px_-10px_oklch(0.52_0.18_0/0.7)] transition hover:scale-[1.02]">
               Ver programa completo
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
             </a>
@@ -328,7 +329,7 @@ function Programa() {
   return (
     <section id="programa" className="bg-network-soft py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--magenta-soft)]">Programa</div>
+        <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--magenta-soft)]">Planning</div>
         <h2 className="mb-10 text-4xl font-bold text-white md:text-5xl">Cinco jornadas, una visión</h2>
 
         {/* Tabs */}
