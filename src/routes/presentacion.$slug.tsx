@@ -1,11 +1,36 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useState } from "react";
 import { Lock, MonitorPlay, Download } from "lucide-react";
-import { getPresentacion, unlockPresentacion } from "@/lib/presentacion.functions";
+import presentacionChicano from "@/assets/presentaciones/Presentacion-jose-chicano.pptx.asset.json";
+
+// Presentaciones protegidas por contraseña (verificación 100% en el navegador,
+// funciona en cualquier alojamiento estático o Node sin variables de entorno).
+const PRESENTACIONES: Record<
+  string,
+  { titulo: string; url: string; passwordHash: string }
+> = {
+  "jose-chicano": {
+    titulo: "Retos, posibilidades y tendencias del control interno — Jose F. Chicano",
+    url: presentacionChicano.url,
+    // SHA-256 de la contraseña de acceso.
+    passwordHash:
+      "feee754a75f35643c90bc8dca3d2743f345f55edb90289d3da71a1218e530f86",
+  },
+};
+
+const SESSION_KEY_PREFIX = "presentacion-unlocked:";
+
+async function sha256Hex(text: string): Promise<string> {
+  const digest = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(text),
+  );
+  return Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
 
 export const Route = createFileRoute("/presentacion/$slug")({
-  loader: ({ params }) => getPresentacion({ data: { slug: params.slug } }),
   head: () => ({
     meta: [
       { title: "Presentación protegida | Control Interno Local" },
@@ -17,7 +42,8 @@ export const Route = createFileRoute("/presentacion/$slug")({
       { property: "og:title", content: "Presentación protegida | Control Interno Local" },
       {
         property: "og:description",
-        content: "Introduce la contraseña facilitada para acceder a la presentación de la ponencia.",
+        content:
+          "Introduce la contraseña facilitada para acceder a la presentación de la ponencia.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -28,46 +54,63 @@ export const Route = createFileRoute("/presentacion/$slug")({
 
 function PresentacionPage() {
   const { slug } = Route.useParams();
-  const initial = Route.useLoaderData();
-  const unlock = useServerFn(unlockPresentacion);
-  const [data, setData] = useState(initial);
+  const item = PRESENTACIONES[slug];
+  const sessionKey = SESSION_KEY_PREFIX + slug;
+
+  const [unlocked, setUnlocked] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [viewerSrc, setViewerSrc] = useState<string | null>(null);
 
-  const fileUrl = data.ok ? data.url : null;
   useEffect(() => {
-    if (!fileUrl) {
+    try {
+      if (item && sessionStorage.getItem(sessionKey) === "1") setUnlocked(true);
+    } catch {
+      // sessionStorage no disponible: se pedirá la contraseña siempre
+    }
+  }, [item, sessionKey]);
+
+  useEffect(() => {
+    if (!unlocked || !item) {
       setViewerSrc(null);
       return;
     }
-    const absolute = new URL(fileUrl, window.location.origin).toString();
+    const absolute = new URL(item.url, window.location.origin).toString();
     setViewerSrc(
       `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(absolute)}`,
     );
-  }, [fileUrl]);
+  }, [unlocked, item]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!item) return;
     setLoading(true);
     setError(false);
     const password = String(new FormData(e.currentTarget).get("password") ?? "");
-    const res = await unlock({ data: { password, slug } });
+    const hash = await sha256Hex(password);
     setLoading(false);
-    if (res.ok) setData(res);
-    else setError(true);
+    if (hash === item.passwordHash) {
+      try {
+        sessionStorage.setItem(sessionKey, "1");
+      } catch {
+        // sin almacenamiento: acceso válido para esta visita
+      }
+      setUnlocked(true);
+    } else {
+      setError(true);
+    }
   }
 
   return (
     <main className="bg-network min-h-screen px-4 py-16 text-white">
       <div className="mx-auto w-full max-w-2xl rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur">
-        {data.ok ? (
+        {item && unlocked ? (
           <>
             <h1 className="flex items-center gap-3 text-2xl font-semibold">
               <MonitorPlay className="h-6 w-6 text-[var(--color-blue-light,#5cc8ff)]" />
               Presentación
             </h1>
-            <p className="mt-3 text-white/70">{data.titulo}</p>
+            <p className="mt-3 text-white/70">{item.titulo}</p>
 
             <div className="mt-6 aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-black/30">
               {viewerSrc ? (
@@ -89,7 +132,7 @@ function PresentacionPage() {
 
             <div className="mt-6 flex flex-wrap gap-3">
               <a
-                href={data.url}
+                href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 font-medium transition hover:bg-white/20"
@@ -98,7 +141,7 @@ function PresentacionPage() {
                 Abrir en otra pestaña
               </a>
               <a
-                href={data.url}
+                href={item.url}
                 download
                 className="inline-flex items-center gap-2 rounded-full bg-white/90 px-6 py-3 font-medium text-[#0d2a4a] transition hover:bg-white"
               >
@@ -132,7 +175,14 @@ function PresentacionPage() {
                 {loading ? "Comprobando…" : "Entrar"}
               </button>
             </form>
-            {error && <p className="mt-3 text-sm text-rose-300">Contraseña incorrecta.</p>}
+            {error && (
+              <p className="mt-3 text-sm text-rose-300">Contraseña incorrecta.</p>
+            )}
+            {!item && (
+              <p className="mt-3 text-sm text-rose-300">
+                Esta presentación no existe.
+              </p>
+            )}
           </>
         )}
       </div>
