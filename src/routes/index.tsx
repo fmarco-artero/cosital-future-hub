@@ -25,7 +25,7 @@ import cvMagda from "@/assets/cv/CV_Oxford_Magda_Gomez.pdf.asset.json";
 import programaPdf from "@/assets/programa/programa.pdf.asset.json";
 
 // Presentaciones protegidas por contraseña: nombre → slug de /presentacion/$slug
-// Añade aquí nuevas presentaciones (y su archivo en src/lib/presentacion.functions.ts)
+// Añade aquí nuevas presentaciones (y su entrada en src/routes/presentacion.$slug.tsx)
 const PRESENTACION_MAP: Record<string, string> = {
   "Jose F. Chicano": "jose-chicano",
 };
