@@ -2,6 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Lock, MonitorPlay, Download } from "lucide-react";
 import presentacionChicano from "@/assets/presentaciones/Presentacion-jose-chicano.pptx.asset.json";
+import presentacionRequejoUrbanismo from "@/assets/presentaciones/Presentacion-javier-requejo-urbanismo.pptx.asset.json";
+import presentacionRequejoConcesiones from "@/assets/presentaciones/Presentacion-javier-requejo-control-de-concesiones.pptx.asset.json";
+import presentacionSandraMar from "@/assets/presentaciones/Presentacion-sandra-salvat-y-marimar-medall.pptx.asset.json";
 
 // Presentaciones protegidas por contraseña (verificación 100% en el navegador,
 // funciona en cualquier alojamiento estático o Node sin variables de entorno).
@@ -13,6 +16,24 @@ const PRESENTACIONES: Record<
     titulo: "Retos, posibilidades y tendencias del control interno — Jose F. Chicano",
     url: presentacionChicano.url,
     // SHA-256 de la contraseña de acceso.
+    passwordHash:
+      "feee754a75f35643c90bc8dca3d2743f345f55edb90289d3da71a1218e530f86",
+  },
+  "javier-requejo-urbanismo": {
+    titulo: "Urbanismo — Javier Requejo",
+    url: presentacionRequejoUrbanismo.url,
+    passwordHash:
+      "feee754a75f35643c90bc8dca3d2743f345f55edb90289d3da71a1218e530f86",
+  },
+  "javier-requejo-control-concesiones": {
+    titulo: "Control de concesiones — Javier Requejo",
+    url: presentacionRequejoConcesiones.url,
+    passwordHash:
+      "feee754a75f35643c90bc8dca3d2743f345f55edb90289d3da71a1218e530f86",
+  },
+  "sandra-salvat-mar-medall": {
+    titulo: "El control permanente previo y la gestión de riesgos — Sandra Salvat y Mar Medall",
+    url: presentacionSandraMar.url,
     passwordHash:
       "feee754a75f35643c90bc8dca3d2743f345f55edb90289d3da71a1218e530f86",
   },
