@@ -85,7 +85,7 @@ const JORNADAS: Jornada[] = [
       { hora: "8:45–9:00", titulo: "Recepción y presentación del curso" },
       { hora: "9:00–11:00", titulo: "Retos, posibilidades y tendencias del control interno", ponentes: [{ nombre: "Jose F. Chicano", cargo: "Interventor General · Ayuntamiento de Tarragona" }], presentaciones: [{ slug: "jose-chicano" }] },
       { hora: "11:00–11:30", titulo: "Pausa desayuno", pausa: true },
-      { hora: "11:30–13:00", titulo: "FRB. El cuadro de mandos. La IA en FRB", ponentes: [{ nombre: "M.C. Aparisi", cargo: "Interventora General · Ayuntamiento de Torrent" }] },
+      { hora: "11:30–13:00", titulo: "FRB. El cuadro de mandos. La IA en FRB", ponentes: [{ nombre: "M.C. Aparisi", cargo: "Interventora General · Ayuntamiento de Torrent" }], presentaciones: [{ slug: "maricarmen-aparisi" }] },
       { hora: "13:00–14:30", titulo: "El control permanente previo y la gestión de riesgos", ponentes: [
         { nombre: "Sandra Salvat", cargo: "Jefa de Servicio de Control Previo · Ayuntamiento de Tarragona" },
         { nombre: "Mar Medall", cargo: "Interventora General · Ayuntamiento de Amposta" },
