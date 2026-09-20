@@ -24,12 +24,6 @@ import cvRocio from "@/assets/cv/CV_Oxford_Rocio_Arteaga.pdf.asset.json";
 import cvMagda from "@/assets/cv/CV_Oxford_Magda_Gomez.pdf.asset.json";
 import programaPdf from "@/assets/programa/programa.pdf.asset.json";
 
-// Presentaciones protegidas por contraseña: nombre → slug de /presentacion/$slug
-// Añade aquí nuevas presentaciones (y su entrada en src/routes/presentacion.$slug.tsx)
-const PRESENTACION_MAP: Record<string, string> = {
-  "Jose F. Chicano": "jose-chicano",
-};
-
 // Mapeo nombre → URL del CV. Añade nuevas entradas aquí cuando incorpores ponentes.
 const CV_MAP: Record<string, string> = {
   "Antonio Minguillón": cvMinguillon.url,
@@ -74,7 +68,13 @@ export const Route = createFileRoute("/")({
    DATA — Edita aquí para añadir/modificar jornadas y ponentes
    ============================================================ */
 
-type Sesion = { hora: string; titulo: string; ponentes?: { nombre: string; cargo: string }[]; pausa?: boolean };
+type Sesion = {
+  hora: string;
+  titulo: string;
+  ponentes?: { nombre: string; cargo: string }[];
+  presentaciones?: { slug: string; etiqueta?: string }[];
+  pausa?: boolean;
+};
 type Jornada = { num: number; fecha: string; titulo: string; color: string; accent: string; sesiones: Sesion[] };
 
 const JORNADAS: Jornada[] = [
@@ -83,20 +83,23 @@ const JORNADAS: Jornada[] = [
     color: "var(--blue-light)", accent: "blue-light",
     sesiones: [
       { hora: "8:45–9:00", titulo: "Recepción y presentación del curso" },
-      { hora: "9:00–11:00", titulo: "Retos, posibilidades y tendencias del control interno", ponentes: [{ nombre: "Jose F. Chicano", cargo: "Interventor General · Ayuntamiento de Tarragona" }] },
+      { hora: "9:00–11:00", titulo: "Retos, posibilidades y tendencias del control interno", ponentes: [{ nombre: "Jose F. Chicano", cargo: "Interventor General · Ayuntamiento de Tarragona" }], presentaciones: [{ slug: "jose-chicano" }] },
       { hora: "11:00–11:30", titulo: "Pausa desayuno", pausa: true },
       { hora: "11:30–13:00", titulo: "FRB. El cuadro de mandos. La IA en FRB", ponentes: [{ nombre: "M.C. Aparisi", cargo: "Interventora General · Ayuntamiento de Torrent" }] },
       { hora: "13:00–14:30", titulo: "El control permanente previo y la gestión de riesgos", ponentes: [
         { nombre: "Sandra Salvat", cargo: "Jefa de Servicio de Control Previo · Ayuntamiento de Tarragona" },
         { nombre: "Mar Medall", cargo: "Interventora General · Ayuntamiento de Amposta" },
-      ]},
+      ], presentaciones: [{ slug: "sandra-salvat-mar-medall" }] },
     ],
   },
   {
     num: 2, fecha: "18 sept", titulo: "Control financiero, IA y áreas de especial riesgo",
     color: "var(--emerald)", accent: "emerald",
     sesiones: [
-      { hora: "9:00–10:30", titulo: "Más allá del presupuesto: control de las concesiones, el patrimonio y el urbanismo en las entidades locales", ponentes: [{ nombre: "Javier Requejo", cargo: "Viceinterventor General · Ayuntamiento de Tarragona" }] },
+      { hora: "9:00–10:30", titulo: "Más allá del presupuesto: control de las concesiones, el patrimonio y el urbanismo en las entidades locales", ponentes: [{ nombre: "Javier Requejo", cargo: "Viceinterventor General · Ayuntamiento de Tarragona" }], presentaciones: [
+        { slug: "javier-requejo-urbanismo", etiqueta: "Presentación · Urbanismo" },
+        { slug: "javier-requejo-control-concesiones", etiqueta: "Presentación · Control de concesiones" },
+      ] },
       { hora: "10:30–11:00", titulo: "Pausa desayuno", pausa: true },
       { hora: "11:00–12:30", titulo: "Los riesgos de la mala utilización de la IA", ponentes: [{ nombre: "Matilde Castellano", cargo: "Viceinterventora General · Junta de Comunidades de Castilla-La Mancha" }] },
       { hora: "12:30–14:30", titulo: "Control financiero e inteligencia artificial: una herramienta para trabajar mejor", ponentes: [{ nombre: "Rocío Arteaga", cargo: "Interventora Adjunta · Diputación de Málaga" }] },
@@ -410,23 +413,27 @@ function SesionItem({ sesion, color }: { sesion: Sesion; color: string }) {
                       {p.nombre}
                     </NameTag>
                     <span className="text-white/55"> · {p.cargo}</span>
-                    {/* Presentación protegida por contraseña (ver PRESENTACION_MAP) */}
-                    {PRESENTACION_MAP[p.nombre] && (
-                      <Link
-                        to="/presentacion/$slug"
-                        params={{ slug: PRESENTACION_MAP[p.nombre] }}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="ml-2 inline-flex items-center gap-1 rounded-full border border-[var(--blue-light)]/40 px-2 py-0.5 align-middle text-xs font-medium text-[var(--blue-light)] transition hover:bg-[var(--blue-light)]/10"
-                      >
-                        <MonitorPlay className="h-3.5 w-3.5" />
-                        Presentación
-                      </Link>
-                    )}
                   </div>
                 </div>
               );
             })}
+          </div>
+        )}
+        {sesion.presentaciones && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {sesion.presentaciones.map((presentacion) => (
+              <Link
+                key={presentacion.slug}
+                to="/presentacion/$slug"
+                params={{ slug: presentacion.slug }}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 rounded-full border border-[var(--blue-light)]/40 px-2 py-0.5 text-xs font-medium text-[var(--blue-light)] transition hover:bg-[var(--blue-light)]/10"
+              >
+                <MonitorPlay className="h-3.5 w-3.5" />
+                {presentacion.etiqueta ?? "Presentación"}
+              </Link>
+            ))}
           </div>
         )}
       </div>
