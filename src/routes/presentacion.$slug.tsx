@@ -101,9 +101,13 @@ function PresentacionPage() {
       return;
     }
     const absolute = new URL(item.url, window.location.origin).toString();
-    setViewerSrc(
-      `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(absolute)}`,
-    );
+    if (item.formato === "pdf") {
+      setViewerSrc(absolute);
+    } else {
+      setViewerSrc(
+        `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(absolute)}`,
+      );
+    }
   }, [unlocked, item]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
