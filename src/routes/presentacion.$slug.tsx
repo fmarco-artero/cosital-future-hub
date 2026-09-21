@@ -18,28 +18,28 @@ const PRESENTACIONES: Record<
     formato: "pptx",
     // SHA-256 de la contraseña de acceso.
     passwordHash:
-      "feee754a75f35643c90bc8dca3d2743f345f55edb90289d3da71a1218e530f86",
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
   },
   "sandra-salvat-mar-medall": {
     titulo: "El control permanente previo y la gestión de riesgos — Sandra Salvat y Mar Medall (Parte 1)",
     url: presentacionSandraMar.url,
     formato: "pptx",
     passwordHash:
-      "feee754a75f35643c90bc8dca3d2743f345f55edb90289d3da71a1218e530f86",
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
   },
   "sandra-salvat-mar-medall-parte-2": {
     titulo: "El control permanente previo y la gestión de riesgos — Sandra Salvat y Mar Medall (Parte 2)",
     url: presentacionSandraMarParte2.url,
     formato: "pdf",
     passwordHash:
-      "feee754a75f35643c90bc8dca3d2743f345f55edb90289d3da71a1218e530f86",
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
   },
   "maricarmen-aparisi": {
     titulo: "FRB. El cuadro de mandos. La IA en FRB — M.C. Aparisi",
     url: presentacionMariCarmenAparisi.url,
     formato: "pptx",
     passwordHash:
-      "feee754a75f35643c90bc8dca3d2743f345f55edb90289d3da71a1218e530f86",
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
   },
 };
 
