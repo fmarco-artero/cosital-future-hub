@@ -2,9 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Lock, MonitorPlay, Download } from "lucide-react";
 import presentacionChicano from "@/assets/presentaciones/Presentacion-jose-chicano.pptx.asset.json";
-import presentacionRequejoUrbanismo from "@/assets/presentaciones/Presentacion-javier-requejo-urbanismo.pptx.asset.json";
-import presentacionRequejoConcesiones from "@/assets/presentaciones/Presentacion-javier-requejo-control-de-concesiones.pptx.asset.json";
 import presentacionSandraMar from "@/assets/presentaciones/Presentacion-sandra-salvat-y-marimar-medall.pptx.asset.json";
+import presentacionSandraMarParte2 from "@/assets/presentaciones/Presentacion-sandra-salvat-y-marimar-medall-parte-2.pdf.asset.json";
 import presentacionMariCarmenAparisi from "@/assets/presentaciones/Presentacion-maricarmen-aparici.pptx.asset.json";
 
 // Presentaciones protegidas por contraseña (verificación 100% en el navegador,
