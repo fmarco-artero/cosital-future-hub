@@ -2,45 +2,42 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Lock, MonitorPlay, Download } from "lucide-react";
 import presentacionChicano from "@/assets/presentaciones/Presentacion-jose-chicano.pptx.asset.json";
-import presentacionRequejoUrbanismo from "@/assets/presentaciones/Presentacion-javier-requejo-urbanismo.pptx.asset.json";
-import presentacionRequejoConcesiones from "@/assets/presentaciones/Presentacion-javier-requejo-control-de-concesiones.pptx.asset.json";
 import presentacionSandraMar from "@/assets/presentaciones/Presentacion-sandra-salvat-y-marimar-medall.pptx.asset.json";
+import presentacionSandraMarParte2 from "@/assets/presentaciones/Presentacion-sandra-salvat-y-marimar-medall-parte-2.pdf.asset.json";
 import presentacionMariCarmenAparisi from "@/assets/presentaciones/Presentacion-maricarmen-aparici.pptx.asset.json";
 
 // Presentaciones protegidas por contraseña (verificación 100% en el navegador,
 // funciona en cualquier alojamiento estático o Node sin variables de entorno).
 const PRESENTACIONES: Record<
   string,
-  { titulo: string; url: string; passwordHash: string }
+  { titulo: string; url: string; formato: "pptx" | "pdf"; passwordHash: string }
 > = {
   "jose-chicano": {
     titulo: "Retos, posibilidades y tendencias del control interno — Jose F. Chicano",
     url: presentacionChicano.url,
+    formato: "pptx",
     // SHA-256 de la contraseña de acceso.
     passwordHash:
       "feee754a75f35643c90bc8dca3d2743f345f55edb90289d3da71a1218e530f86",
   },
-  "javier-requejo-urbanismo": {
-    titulo: "Urbanismo — Javier Requejo",
-    url: presentacionRequejoUrbanismo.url,
-    passwordHash:
-      "feee754a75f35643c90bc8dca3d2743f345f55edb90289d3da71a1218e530f86",
-  },
-  "javier-requejo-control-concesiones": {
-    titulo: "Control de concesiones — Javier Requejo",
-    url: presentacionRequejoConcesiones.url,
-    passwordHash:
-      "feee754a75f35643c90bc8dca3d2743f345f55edb90289d3da71a1218e530f86",
-  },
   "sandra-salvat-mar-medall": {
-    titulo: "El control permanente previo y la gestión de riesgos — Sandra Salvat y Mar Medall",
+    titulo: "El control permanente previo y la gestión de riesgos — Sandra Salvat y Mar Medall (Parte 1)",
     url: presentacionSandraMar.url,
+    formato: "pptx",
+    passwordHash:
+      "feee754a75f35643c90bc8dca3d2743f345f55edb90289d3da71a1218e530f86",
+  },
+  "sandra-salvat-mar-medall-parte-2": {
+    titulo: "El control permanente previo y la gestión de riesgos — Sandra Salvat y Mar Medall (Parte 2)",
+    url: presentacionSandraMarParte2.url,
+    formato: "pdf",
     passwordHash:
       "feee754a75f35643c90bc8dca3d2743f345f55edb90289d3da71a1218e530f86",
   },
   "maricarmen-aparisi": {
     titulo: "FRB. El cuadro de mandos. La IA en FRB — M.C. Aparisi",
     url: presentacionMariCarmenAparisi.url,
+    formato: "pptx",
     passwordHash:
       "feee754a75f35643c90bc8dca3d2743f345f55edb90289d3da71a1218e530f86",
   },
@@ -104,9 +101,13 @@ function PresentacionPage() {
       return;
     }
     const absolute = new URL(item.url, window.location.origin).toString();
-    setViewerSrc(
-      `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(absolute)}`,
-    );
+    if (item.formato === "pdf") {
+      setViewerSrc(absolute);
+    } else {
+      setViewerSrc(
+        `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(absolute)}`,
+      );
+    }
   }, [unlocked, item]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {

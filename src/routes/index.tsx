@@ -89,17 +89,17 @@ const JORNADAS: Jornada[] = [
       { hora: "13:00–14:30", titulo: "El control permanente previo y la gestión de riesgos", ponentes: [
         { nombre: "Sandra Salvat", cargo: "Jefa de Servicio de Control Previo · Ayuntamiento de Tarragona" },
         { nombre: "Mar Medall", cargo: "Interventora General · Ayuntamiento de Amposta" },
-      ], presentaciones: [{ slug: "sandra-salvat-mar-medall" }] },
+      ], presentaciones: [
+        { slug: "sandra-salvat-mar-medall", etiqueta: "Presentación · Parte 1" },
+        { slug: "sandra-salvat-mar-medall-parte-2", etiqueta: "Presentación · Parte 2" },
+      ] },
     ],
   },
   {
     num: 2, fecha: "18 sept", titulo: "Control financiero, IA y áreas de especial riesgo",
     color: "var(--emerald)", accent: "emerald",
     sesiones: [
-      { hora: "9:00–10:30", titulo: "Más allá del presupuesto: control de las concesiones, el patrimonio y el urbanismo en las entidades locales", ponentes: [{ nombre: "Javier Requejo", cargo: "Viceinterventor General · Ayuntamiento de Tarragona" }], presentaciones: [
-        { slug: "javier-requejo-urbanismo", etiqueta: "Presentación · Urbanismo" },
-        { slug: "javier-requejo-control-concesiones", etiqueta: "Presentación · Control de concesiones" },
-      ] },
+      { hora: "9:00–10:30", titulo: "Más allá del presupuesto: control de las concesiones, el patrimonio y el urbanismo en las entidades locales", ponentes: [{ nombre: "Javier Requejo", cargo: "Viceinterventor General · Ayuntamiento de Tarragona" }] },
       { hora: "10:30–11:00", titulo: "Pausa desayuno", pausa: true },
       { hora: "11:00–12:30", titulo: "Los riesgos de la mala utilización de la IA", ponentes: [{ nombre: "Matilde Castellano", cargo: "Viceinterventora General · Junta de Comunidades de Castilla-La Mancha" }] },
       { hora: "12:30–14:30", titulo: "Control financiero e inteligencia artificial: una herramienta para trabajar mejor", ponentes: [{ nombre: "Rocío Arteaga", cargo: "Interventora Adjunta · Diputación de Málaga" }] },
