@@ -107,6 +107,20 @@ const PRESENTACIONES: Record<
     passwordHash:
       "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
   },
+  "manel-perez": {
+    titulo: "Comprobación material de la inversión — Manel Pérez",
+    url: presentacionManelPerez.url,
+    formato: "pptx",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
+  "sandra-salvat-j3": {
+    titulo: "Agente de IA como soporte al OCIL en contratación y CMI — Sandra Salvat",
+    url: presentacionSandraSalvatJ3.url,
+    formato: "pptx",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
 };
 
 const SESSION_KEY_PREFIX = "presentacion-unlocked:";
