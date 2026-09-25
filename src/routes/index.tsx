@@ -115,8 +115,8 @@ const JORNADAS: Jornada[] = [
     sesiones: [
       { hora: "9:00–11:00", titulo: "Del visto bueno al valor público: una visión moderna del control interno de la contratación", ponentes: [{ nombre: "José Claudio Álvarez Villazón", cargo: "Vocal · Tribunal Administrativo Central de Recursos Contractuales" }], presentaciones: [{ slug: "jose-claudio-alvarez" }] },
       { hora: "11:00–11:30", titulo: "Pausa desayuno", pausa: true },
-      { hora: "11:30–13:00", titulo: "Comprobación material de la inversión", ponentes: [{ nombre: "Manel Pérez", cargo: "Facultativo Asesor OCI Tarragona" }] },
-      { hora: "13:00–14:30", titulo: "Agente de IA como soporte al OCIL en contratación y CMI. Aplicación práctica", ponentes: [{ nombre: "Sandra Salvat", cargo: "Jefa de Servicio de Control Previo · Ayuntamiento de Tarragona" }] },
+      { hora: "11:30–13:00", titulo: "Comprobación material de la inversión", ponentes: [{ nombre: "Manel Pérez", cargo: "Facultativo Asesor OCI Tarragona" }], presentaciones: [{ slug: "manel-perez" }] },
+      { hora: "13:00–14:30", titulo: "Agente de IA como soporte al OCIL en contratación y CMI. Aplicación práctica", ponentes: [{ nombre: "Sandra Salvat", cargo: "Jefa de Servicio de Control Previo · Ayuntamiento de Tarragona" }], presentaciones: [{ slug: "sandra-salvat-j3" }] },
     ],
   },
   {

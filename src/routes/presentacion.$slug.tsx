@@ -13,6 +13,8 @@ import presentacionRocioArteaga from "@/assets/presentaciones/Presentacion-rocio
 import presentacionMatildeCastellanos from "@/assets/presentaciones/Presentacion-matilde-castellanos.pdf.asset.json";
 import presentacionXavierMoises from "@/assets/presentaciones/Presentacion-xavier-moises.pdf.asset.json";
 import presentacionJoseClaudioAlvarez from "@/assets/presentaciones/Presentacion-jose-claudio-alvarez.pptx.asset.json";
+import presentacionManelPerez from "@/assets/presentaciones/Presentacion-manel-perez.pptx.asset.json";
+import presentacionSandraSalvatJ3 from "@/assets/presentaciones/Presentacion-sandra-salvat-j3.pptx.asset.json";
 
 // Presentaciones protegidas por contraseña (verificación 100% en el navegador,
 // funciona en cualquier alojamiento estático o Node sin variables de entorno).
