@@ -99,17 +99,21 @@ const JORNADAS: Jornada[] = [
     num: 2, fecha: "18 sept", titulo: "Control financiero, IA y áreas de especial riesgo",
     color: "var(--emerald)", accent: "emerald",
     sesiones: [
-      { hora: "9:00–10:30", titulo: "Más allá del presupuesto: control de las concesiones, el patrimonio y el urbanismo en las entidades locales", ponentes: [{ nombre: "Javier Requejo", cargo: "Viceinterventor General · Ayuntamiento de Tarragona" }] },
+      { hora: "9:00–10:30", titulo: "Más allá del presupuesto: control de las concesiones, el patrimonio y el urbanismo en las entidades locales", ponentes: [{ nombre: "Javier Requejo", cargo: "Viceinterventor General · Ayuntamiento de Tarragona" }], presentaciones: [
+        { slug: "javier-requejo-urbanismo", etiqueta: "Presentación · Urbanismo" },
+        { slug: "javier-requejo-control-concesiones", etiqueta: "Presentación · Control de concesiones" },
+        { slug: "javier-requejo-patrimonio", etiqueta: "Presentación · Patrimonio" },
+      ] },
       { hora: "10:30–11:00", titulo: "Pausa desayuno", pausa: true },
-      { hora: "11:00–12:30", titulo: "Los riesgos de la mala utilización de la IA", ponentes: [{ nombre: "Matilde Castellano", cargo: "Viceinterventora General · Junta de Comunidades de Castilla-La Mancha" }] },
-      { hora: "12:30–14:30", titulo: "Control financiero e inteligencia artificial: una herramienta para trabajar mejor", ponentes: [{ nombre: "Rocío Arteaga", cargo: "Interventora Adjunta · Diputación de Málaga" }] },
+      { hora: "11:00–12:30", titulo: "Los riesgos de la mala utilización de la IA", ponentes: [{ nombre: "Matilde Castellano", cargo: "Viceinterventora General · Junta de Comunidades de Castilla-La Mancha" }], presentaciones: [{ slug: "matilde-castellanos" }] },
+      { hora: "12:30–14:30", titulo: "Control financiero e inteligencia artificial: una herramienta para trabajar mejor", ponentes: [{ nombre: "Rocío Arteaga", cargo: "Interventora Adjunta · Diputación de Málaga" }], presentaciones: [{ slug: "rocio-arteaga" }] },
     ],
   },
   {
     num: 3, fecha: "24 sept", titulo: "El control interno y la contratación: una mirada de futuro",
     color: "var(--violet)", accent: "violet",
     sesiones: [
-      { hora: "9:00–11:00", titulo: "Del visto bueno al valor público: una visión moderna del control interno de la contratación", ponentes: [{ nombre: "José Claudio Álvarez Villazón", cargo: "Vocal · Tribunal Administrativo Central de Recursos Contractuales" }] },
+      { hora: "9:00–11:00", titulo: "Del visto bueno al valor público: una visión moderna del control interno de la contratación", ponentes: [{ nombre: "José Claudio Álvarez Villazón", cargo: "Vocal · Tribunal Administrativo Central de Recursos Contractuales" }], presentaciones: [{ slug: "jose-claudio-alvarez" }] },
       { hora: "11:00–11:30", titulo: "Pausa desayuno", pausa: true },
       { hora: "11:30–13:00", titulo: "Comprobación material de la inversión", ponentes: [{ nombre: "Manel Pérez", cargo: "Facultativo Asesor OCI Tarragona" }] },
       { hora: "13:00–14:30", titulo: "Agente de IA como soporte al OCIL en contratación y CMI. Aplicación práctica", ponentes: [{ nombre: "Sandra Salvat", cargo: "Jefa de Servicio de Control Previo · Ayuntamiento de Tarragona" }] },
@@ -122,13 +126,12 @@ const JORNADAS: Jornada[] = [
       { hora: "9:00–11:00", titulo: "Más allá del cumplimiento: integridad, transparencia y buen gobierno en los entes del sector público", ponentes: [
         { nombre: "Xavi Moisés", cargo: "Responsable de Control de Empresas · Ayuntamiento de Tarragona" },
         { nombre: "Beatriz Montes", cargo: "Interventora y Auditora · Generalitat Valenciana" },
+      ], presentaciones: [
+        { slug: "xavier-moises", etiqueta: "Presentación · Xavi Moisés" },
+        { slug: "beatriz-montes", etiqueta: "Presentación · Beatriz Montes" },
       ]},
       { hora: "11:00–11:30", titulo: "Pausa desayuno", pausa: true },
-      { hora: "11:30–13:30", titulo: "IA, gestión de riesgos y nuevas tecnologías en control", ponentes: [{ nombre: "Javier Requejo", cargo: "Viceinterventor General · Ayuntamiento de Tarragona" }], presentaciones: [
-        { slug: "javier-requejo-urbanismo", etiqueta: "Presentación · Urbanismo" },
-        { slug: "javier-requejo-control-concesiones", etiqueta: "Presentación · Control de concesiones" },
-        { slug: "javier-requejo-patrimonio", etiqueta: "Presentación · Patrimonio" },
-      ] },
+      { hora: "11:30–13:30", titulo: "IA, gestión de riesgos y nuevas tecnologías en control", ponentes: [{ nombre: "Javier Requejo", cargo: "Viceinterventor General · Ayuntamiento de Tarragona" }] },
       { hora: "13:30–14:30", titulo: "Construcción del Informe de Control Permanente Planificado (régimen de control financiero) con la incorporación del modelo HITL (Human In the Loop)", ponentes: [{ nombre: "Magda Gómez", cargo: "Jefa de Servicio de Control Financiero · Ayuntamiento de Tarragona" }] },
     ],
   },
