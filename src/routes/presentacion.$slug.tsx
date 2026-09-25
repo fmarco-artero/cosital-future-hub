@@ -8,6 +8,11 @@ import presentacionMariCarmenAparisi from "@/assets/presentaciones/Presentacion-
 import presentacionRequejoUrbanismo from "@/assets/presentaciones/Presentacion-javier-requejo-urbanismo.pptx.asset.json";
 import presentacionRequejoConcesiones from "@/assets/presentaciones/Presentacion-javier-requejo-control-de-concesiones.pptx.asset.json";
 import presentacionRequejoPatrimonio from "@/assets/presentaciones/Presentacion-javier-requejo-patrimonio.pptx.asset.json";
+import presentacionBeatrizMontes from "@/assets/presentaciones/Presentacion-beatriz-montes.pdf.asset.json";
+import presentacionRocioArteaga from "@/assets/presentaciones/Presentacion-rocio-arteaga.pdf.asset.json";
+import presentacionMatildeCastellanos from "@/assets/presentaciones/Presentacion-matilde-castellanos.pdf.asset.json";
+import presentacionXavierMoises from "@/assets/presentaciones/Presentacion-xavier-moises.pdf.asset.json";
+import presentacionJoseClaudioAlvarez from "@/assets/presentaciones/Presentacion-jose-claudio-alvarez.pptx.asset.json";
 
 // Presentaciones protegidas por contraseña (verificación 100% en el navegador,
 // funciona en cualquier alojamiento estático o Node sin variables de entorno).
@@ -61,6 +66,41 @@ const PRESENTACIONES: Record<
   "javier-requejo-patrimonio": {
     titulo: "Patrimonio — Javier Requejo",
     url: presentacionRequejoPatrimonio.url,
+    formato: "pptx",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
+  "beatriz-montes": {
+    titulo: "Integridad, transparencia y buen gobierno — Beatriz Montes",
+    url: presentacionBeatrizMontes.url,
+    formato: "pdf",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
+  "rocio-arteaga": {
+    titulo: "Control financiero e inteligencia artificial — Rocío Arteaga",
+    url: presentacionRocioArteaga.url,
+    formato: "pdf",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
+  "matilde-castellanos": {
+    titulo: "Los riesgos de la mala utilización de la IA — Matilde Castellano",
+    url: presentacionMatildeCastellanos.url,
+    formato: "pdf",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
+  "xavier-moises": {
+    titulo: "Integridad, transparencia y buen gobierno — Xavi Moisés",
+    url: presentacionXavierMoises.url,
+    formato: "pdf",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
+  "jose-claudio-alvarez": {
+    titulo: "Del visto bueno al valor público — José Claudio Álvarez Villazón",
+    url: presentacionJoseClaudioAlvarez.url,
     formato: "pptx",
     passwordHash:
       "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
