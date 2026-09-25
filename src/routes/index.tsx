@@ -124,7 +124,11 @@ const JORNADAS: Jornada[] = [
         { nombre: "Beatriz Montes", cargo: "Interventora y Auditora · Generalitat Valenciana" },
       ]},
       { hora: "11:00–11:30", titulo: "Pausa desayuno", pausa: true },
-      { hora: "11:30–13:30", titulo: "IA, gestión de riesgos y nuevas tecnologías en control", ponentes: [{ nombre: "Javier Requejo", cargo: "Viceinterventor General · Ayuntamiento de Tarragona" }] },
+      { hora: "11:30–13:30", titulo: "IA, gestión de riesgos y nuevas tecnologías en control", ponentes: [{ nombre: "Javier Requejo", cargo: "Viceinterventor General · Ayuntamiento de Tarragona" }], presentaciones: [
+        { slug: "javier-requejo-urbanismo", etiqueta: "Presentación · Urbanismo" },
+        { slug: "javier-requejo-control-concesiones", etiqueta: "Presentación · Control de concesiones" },
+        { slug: "javier-requejo-patrimonio", etiqueta: "Presentación · Patrimonio" },
+      ] },
       { hora: "13:30–14:30", titulo: "Construcción del Informe de Control Permanente Planificado (régimen de control financiero) con la incorporación del modelo HITL (Human In the Loop)", ponentes: [{ nombre: "Magda Gómez", cargo: "Jefa de Servicio de Control Financiero · Ayuntamiento de Tarragona" }] },
     ],
   },
