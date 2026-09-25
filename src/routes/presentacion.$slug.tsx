@@ -44,6 +44,27 @@ const PRESENTACIONES: Record<
     passwordHash:
       "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
   },
+  "javier-requejo-urbanismo": {
+    titulo: "Urbanismo — Javier Requejo",
+    url: presentacionRequejoUrbanismo.url,
+    formato: "pptx",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
+  "javier-requejo-control-concesiones": {
+    titulo: "Control de concesiones — Javier Requejo",
+    url: presentacionRequejoConcesiones.url,
+    formato: "pptx",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
+  "javier-requejo-patrimonio": {
+    titulo: "Patrimonio — Javier Requejo",
+    url: presentacionRequejoPatrimonio.url,
+    formato: "pptx",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
 };
 
 const SESSION_KEY_PREFIX = "presentacion-unlocked:";
