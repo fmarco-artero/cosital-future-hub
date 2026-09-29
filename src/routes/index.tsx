@@ -3,7 +3,7 @@ import { useState } from "react";
 import {
   Clock, MapPin, Calendar, Users, GraduationCap, Brain, ShieldCheck,
   Scale, FileText, Building2, LineChart, Sparkles, Target, ArrowRight, FileText as FileIcon,
-  Mail, Phone, MonitorPlay,
+  Mail, Phone, MonitorPlay, FolderOpen,
 } from "lucide-react";
 
 // CVs de ponentes (PDFs servidos por CDN)
@@ -72,7 +72,7 @@ type Sesion = {
   hora: string;
   titulo: string;
   ponentes?: { nombre: string; cargo: string }[];
-  presentaciones?: { slug: string; etiqueta?: string }[];
+  presentaciones?: { slug: string; etiqueta?: string; tipo?: "zip" }[];
   pausa?: boolean;
 };
 type Jornada = { num: number; fecha: string; titulo: string; color: string; accent: string; sesiones: Sesion[] };
