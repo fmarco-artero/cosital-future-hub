@@ -15,6 +15,7 @@ import presentacionXavierMoises from "@/assets/presentaciones/Presentacion-xavie
 import presentacionJoseClaudioAlvarez from "@/assets/presentaciones/Presentacion-jose-claudio-alvarez.pptx.asset.json";
 import presentacionManelPerez from "@/assets/presentaciones/Presentacion-manel-perez.pptx.asset.json";
 import presentacionSandraSalvatJ3 from "@/assets/presentaciones/Presentacion-sandra-salvat-j3.pptx.asset.json";
+import presentacionMagdaGomez from "@/assets/presentaciones/Presentacion-magda-gomez.pptx.asset.json";
 
 // Presentaciones protegidas por contraseña (verificación 100% en el navegador,
 // funciona en cualquier alojamiento estático o Node sin variables de entorno).
@@ -117,6 +118,13 @@ const PRESENTACIONES: Record<
   "sandra-salvat-j3": {
     titulo: "Agente de IA como soporte al OCIL en contratación y CMI — Sandra Salvat",
     url: presentacionSandraSalvatJ3.url,
+    formato: "pptx",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
+  "magda-gomez": {
+    titulo: "Construcción del Informe de Control Permanente Planificado (régimen de control financiero) con HITL — Magda Gómez",
+    url: presentacionMagdaGomez.url,
     formato: "pptx",
     passwordHash:
       "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
