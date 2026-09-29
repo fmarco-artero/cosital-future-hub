@@ -3,7 +3,7 @@ import { useState } from "react";
 import {
   Clock, MapPin, Calendar, Users, GraduationCap, Brain, ShieldCheck,
   Scale, FileText, Building2, LineChart, Sparkles, Target, ArrowRight, FileText as FileIcon,
-  Mail, Phone, MonitorPlay,
+  Mail, Phone, MonitorPlay, FolderOpen,
 } from "lucide-react";
 
 // CVs de ponentes (PDFs servidos por CDN)
@@ -72,7 +72,7 @@ type Sesion = {
   hora: string;
   titulo: string;
   ponentes?: { nombre: string; cargo: string }[];
-  presentaciones?: { slug: string; etiqueta?: string }[];
+  presentaciones?: { slug: string; etiqueta?: string; tipo?: "zip" }[];
   pausa?: boolean;
 };
 type Jornada = { num: number; fecha: string; titulo: string; color: string; accent: string; sesiones: Sesion[] };
@@ -83,7 +83,7 @@ const JORNADAS: Jornada[] = [
     color: "var(--blue-light)", accent: "blue-light",
     sesiones: [
       { hora: "8:45–9:00", titulo: "Recepción y presentación del curso" },
-      { hora: "9:00–11:00", titulo: "Retos, posibilidades y tendencias del control interno", ponentes: [{ nombre: "Jose F. Chicano", cargo: "Interventor General · Ayuntamiento de Tarragona" }], presentaciones: [{ slug: "jose-chicano" }] },
+      { hora: "9:00–11:00", titulo: "Retos, posibilidades y tendencias del control interno", ponentes: [{ nombre: "Jose F. Chicano", cargo: "Interventor General · Ayuntamiento de Tarragona" }], presentaciones: [{ slug: "jose-chicano" }, { slug: "documentacion-jose-chicano", etiqueta: "Documentación adicional (ZIP)", tipo: "zip" }] },
       { hora: "11:00–11:30", titulo: "Pausa desayuno", pausa: true },
       { hora: "11:30–13:00", titulo: "FRB. El cuadro de mandos. La IA en FRB", ponentes: [{ nombre: "M.C. Aparisi", cargo: "Interventora General · Ayuntamiento de Torrent" }], presentaciones: [{ slug: "maricarmen-aparisi" }] },
       { hora: "13:00–14:30", titulo: "El control permanente previo y la gestión de riesgos", ponentes: [
@@ -134,6 +134,7 @@ const JORNADAS: Jornada[] = [
       { hora: "11:30–13:30", titulo: "IA, gestión de riesgos y nuevas tecnologías en control", ponentes: [{ nombre: "Javier Requejo", cargo: "Viceinterventor General · Ayuntamiento de Tarragona" }] },
       { hora: "13:30–14:30", titulo: "Construcción del Informe de Control Permanente Planificado (régimen de control financiero) con la incorporación del modelo HITL (Human In the Loop)", ponentes: [{ nombre: "Magda Gómez", cargo: "Jefa de Servicio de Control Financiero · Ayuntamiento de Tarragona" }], presentaciones: [
         { slug: "magda-gomez", etiqueta: "Presentación · Magda Gómez" },
+        { slug: "documentacion-magda-gomez", etiqueta: "Documentación adicional (ZIP)", tipo: "zip" },
       ] },
     ],
   },
@@ -430,19 +431,23 @@ function SesionItem({ sesion, color }: { sesion: Sesion; color: string }) {
         )}
         {sesion.presentaciones && (
           <div className="mt-3 flex flex-wrap gap-2">
-            {sesion.presentaciones.map((presentacion) => (
-              <Link
-                key={presentacion.slug}
-                to="/presentacion/$slug"
-                params={{ slug: presentacion.slug }}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 rounded-full border border-[var(--blue-light)]/40 px-2 py-0.5 text-xs font-medium text-[var(--blue-light)] transition hover:bg-[var(--blue-light)]/10"
-              >
-                <MonitorPlay className="h-3.5 w-3.5" />
-                {presentacion.etiqueta ?? "Presentación"}
-              </Link>
-            ))}
+            {sesion.presentaciones.map((presentacion) => {
+              const esZip = presentacion.tipo === "zip";
+              const Icono = esZip ? FolderOpen : MonitorPlay;
+              return (
+                <Link
+                  key={presentacion.slug}
+                  to="/presentacion/$slug"
+                  params={{ slug: presentacion.slug }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs font-medium transition hover:bg-[var(--blue-light)]/10 ${esZip ? "border-[var(--magenta-soft)]/50 text-[var(--magenta-soft)]" : "border-[var(--blue-light)]/40 text-[var(--blue-light)]"}`}
+                >
+                  <Icono className="h-3.5 w-3.5" />
+                  {presentacion.etiqueta ?? "Presentación"}
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>

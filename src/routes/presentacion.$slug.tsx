@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Lock, MonitorPlay, Download } from "lucide-react";
+import { Lock, MonitorPlay, Download, FolderOpen } from "lucide-react";
 import presentacionChicano from "@/assets/presentaciones/Presentacion-jose-chicano.pptx.asset.json";
 import presentacionSandraMar from "@/assets/presentaciones/Presentacion-sandra-salvat-y-marimar-medall.pptx.asset.json";
 import presentacionSandraMarParte2 from "@/assets/presentaciones/Presentacion-sandra-salvat-y-marimar-medall-parte-2.pdf.asset.json";
@@ -16,12 +16,14 @@ import presentacionJoseClaudioAlvarez from "@/assets/presentaciones/Presentacion
 import presentacionManelPerez from "@/assets/presentaciones/Presentacion-manel-perez.pptx.asset.json";
 import presentacionSandraSalvatJ3 from "@/assets/presentaciones/Presentacion-sandra-salvat-j3.pptx.asset.json";
 import presentacionMagdaGomez from "@/assets/presentaciones/Presentacion-magda-gomez.pptx.asset.json";
+import documentacionChicano from "@/assets/documentacion/Documentacion-adicional-jose-chicano.zip.asset.json";
+import documentacionMagda from "@/assets/documentacion/Documentacion-adicional-magda-gomes.zip.asset.json";
 
 // Presentaciones protegidas por contraseña (verificación 100% en el navegador,
 // funciona en cualquier alojamiento estático o Node sin variables de entorno).
 const PRESENTACIONES: Record<
   string,
-  { titulo: string; url: string; formato: "pptx" | "pdf"; passwordHash: string }
+  { titulo: string; url: string; formato: "pptx" | "pdf" | "zip"; passwordHash: string }
 > = {
   "jose-chicano": {
     titulo: "Retos, posibilidades y tendencias del control interno — Jose F. Chicano",
@@ -129,6 +131,20 @@ const PRESENTACIONES: Record<
     passwordHash:
       "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
   },
+  "documentacion-jose-chicano": {
+    titulo: "Documentación adicional de la ponencia — Jose F. Chicano",
+    url: documentacionChicano.url,
+    formato: "zip",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
+  "documentacion-magda-gomez": {
+    titulo: "Documentación adicional de la ponencia — Magda Gómez",
+    url: documentacionMagda.url,
+    formato: "zip",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
 };
 
 const SESSION_KEY_PREFIX = "presentacion-unlocked:";
@@ -184,7 +200,7 @@ function PresentacionPage() {
   }, [item, sessionKey]);
 
   useEffect(() => {
-    if (!unlocked || !item) {
+    if (!unlocked || !item || item.formato === "zip") {
       setViewerSrc(null);
       return;
     }
@@ -222,51 +238,74 @@ function PresentacionPage() {
     <main className="bg-network min-h-screen px-4 py-16 text-white">
       <div className="mx-auto w-full max-w-2xl rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur">
         {item && unlocked ? (
-          <>
-            <h1 className="flex items-center gap-3 text-2xl font-semibold">
-              <MonitorPlay className="h-6 w-6 text-[var(--color-blue-light,#5cc8ff)]" />
-              Presentación
-            </h1>
-            <p className="mt-3 text-white/70">{item.titulo}</p>
+          item.formato === "zip" ? (
+            <>
+              <h1 className="flex items-center gap-3 text-2xl font-semibold">
+                <FolderOpen className="h-6 w-6 text-[var(--color-blue-light,#5cc8ff)]" />
+                Documentación adicional
+              </h1>
+              <p className="mt-3 text-white/70">{item.titulo}</p>
+              <p className="mt-2 text-sm text-white/50">
+                Este material se entrega en formato ZIP y solo está disponible para descarga.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={item.url}
+                  download
+                  className="inline-flex items-center gap-2 rounded-full bg-white/90 px-6 py-3 font-medium text-[#0d2a4a] transition hover:bg-white"
+                >
+                  <Download className="h-4 w-4" />
+                  Descargar documentación (ZIP)
+                </a>
+              </div>
+            </>
+          ) : (
+            <>
+              <h1 className="flex items-center gap-3 text-2xl font-semibold">
+                <MonitorPlay className="h-6 w-6 text-[var(--color-blue-light,#5cc8ff)]" />
+                Presentación
+              </h1>
+              <p className="mt-3 text-white/70">{item.titulo}</p>
 
-            <div className="mt-6 aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-black/30">
-              {viewerSrc ? (
-                <iframe
-                  src={viewerSrc}
-                  title="Presentación"
-                  className="h-full w-full"
-                  allowFullScreen
-                />
-              ) : (
-                <div className="flex h-full items-center justify-center text-white/50">
-                  Cargando la presentación…
-                </div>
-              )}
-            </div>
-            <p className="mt-3 text-sm text-white/50">
-              Si la vista previa no carga, descarga el archivo para verlo en tu equipo.
-            </p>
+              <div className="mt-6 aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-black/30">
+                {viewerSrc ? (
+                  <iframe
+                    src={viewerSrc}
+                    title="Presentación"
+                    className="h-full w-full"
+                    allowFullScreen
+                  />
+                ) : (
+                  <div className="flex h-full items-center justify-center text-white/50">
+                    Cargando la presentación…
+                  </div>
+                )}
+              </div>
+              <p className="mt-3 text-sm text-white/50">
+                Si la vista previa no carga, descarga el archivo para verlo en tu equipo.
+              </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 font-medium transition hover:bg-white/20"
-              >
-                <MonitorPlay className="h-4 w-4" />
-                Abrir en otra pestaña
-              </a>
-              <a
-                href={item.url}
-                download
-                className="inline-flex items-center gap-2 rounded-full bg-white/90 px-6 py-3 font-medium text-[#0d2a4a] transition hover:bg-white"
-              >
-                <Download className="h-4 w-4" />
-                Descargar la presentación
-              </a>
-            </div>
-          </>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 font-medium transition hover:bg-white/20"
+                >
+                  <MonitorPlay className="h-4 w-4" />
+                  Abrir en otra pestaña
+                </a>
+                <a
+                  href={item.url}
+                  download
+                  className="inline-flex items-center gap-2 rounded-full bg-white/90 px-6 py-3 font-medium text-[#0d2a4a] transition hover:bg-white"
+                >
+                  <Download className="h-4 w-4" />
+                  Descargar la presentación
+                </a>
+              </div>
+            </>
+          )
         ) : (
           <>
             <h1 className="flex items-center gap-3 text-2xl font-semibold">
