@@ -200,7 +200,7 @@ function PresentacionPage() {
   }, [item, sessionKey]);
 
   useEffect(() => {
-    if (!unlocked || !item) {
+    if (!unlocked || !item || item.formato === "zip") {
       setViewerSrc(null);
       return;
     }
