@@ -15,6 +15,7 @@ import presentacionXavierMoises from "@/assets/presentaciones/Presentacion-xavie
 import presentacionJoseClaudioAlvarez from "@/assets/presentaciones/Presentacion-jose-claudio-alvarez.pptx.asset.json";
 import presentacionManelPerez from "@/assets/presentaciones/Presentacion-manel-perez.pptx.asset.json";
 import presentacionSandraSalvatJ3 from "@/assets/presentaciones/Presentacion-sandra-salvat-j3.pptx.asset.json";
+import presentacionMagdaGomez from "@/assets/presentaciones/Presentacion-magda-gomez.pptx.asset.json";
 
 // Presentaciones protegidas por contraseña (verificación 100% en el navegador,
 // funciona en cualquier alojamiento estático o Node sin variables de entorno).
