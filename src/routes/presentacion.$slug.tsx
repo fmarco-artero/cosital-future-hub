@@ -122,6 +122,13 @@ const PRESENTACIONES: Record<
     passwordHash:
       "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
   },
+  "magda-gomez": {
+    titulo: "Construcción del Informe de Control Permanente Planificado (régimen de control financiero) con HITL — Magda Gómez",
+    url: presentacionMagdaGomez.url,
+    formato: "pptx",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
 };
 
 const SESSION_KEY_PREFIX = "presentacion-unlocked:";
