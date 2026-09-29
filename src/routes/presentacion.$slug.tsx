@@ -23,7 +23,7 @@ import documentacionMagda from "@/assets/documentacion/Documentacion-adicional-m
 // funciona en cualquier alojamiento estático o Node sin variables de entorno).
 const PRESENTACIONES: Record<
   string,
-  { titulo: string; url: string; formato: "pptx" | "pdf"; passwordHash: string }
+  { titulo: string; url: string; formato: "pptx" | "pdf" | "zip"; passwordHash: string }
 > = {
   "jose-chicano": {
     titulo: "Retos, posibilidades y tendencias del control interno — Jose F. Chicano",
@@ -128,6 +128,20 @@ const PRESENTACIONES: Record<
     titulo: "Construcción del Informe de Control Permanente Planificado (régimen de control financiero) con HITL — Magda Gómez",
     url: presentacionMagdaGomez.url,
     formato: "pptx",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
+  "documentacion-jose-chicano": {
+    titulo: "Documentación adicional de la ponencia — Jose F. Chicano",
+    url: documentacionChicano.url,
+    formato: "zip",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
+  "documentacion-magda-gomez": {
+    titulo: "Documentación adicional de la ponencia — Magda Gómez",
+    url: documentacionMagda.url,
+    formato: "zip",
     passwordHash:
       "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
   },
