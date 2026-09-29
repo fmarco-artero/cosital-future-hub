@@ -18,6 +18,7 @@ import presentacionSandraSalvatJ3 from "@/assets/presentaciones/Presentacion-san
 import presentacionMagdaGomez from "@/assets/presentaciones/Presentacion-magda-gomez.pptx.asset.json";
 import documentacionChicano from "@/assets/documentacion/Documentacion-adicional-jose-chicano.zip.asset.json";
 import documentacionMagda from "@/assets/documentacion/Documentacion-adicional-magda-gomes.zip.asset.json";
+import documentacionMcarmenAparisi from "@/assets/documentacion/Documentacion-adicional-mcarmen-aparisi.zip.asset.json";
 
 // Presentaciones protegidas por contraseña (verificación 100% en el navegador,
 // funciona en cualquier alojamiento estático o Node sin variables de entorno).
@@ -141,6 +142,13 @@ const PRESENTACIONES: Record<
   "documentacion-magda-gomez": {
     titulo: "Documentación adicional de la ponencia — Magda Gómez",
     url: documentacionMagda.url,
+    formato: "zip",
+    passwordHash:
+      "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
+  },
+  "documentacion-mcarmen-aparisi": {
+    titulo: "Documentación adicional de la ponencia — M.C. Aparisi",
+    url: documentacionMcarmenAparisi.url,
     formato: "zip",
     passwordHash:
       "88a0d428e6a22ed55578ae87454a573ad45eea9ff204d929a544ff9f039251b0",
