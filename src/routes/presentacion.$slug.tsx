@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Lock, MonitorPlay, Download } from "lucide-react";
+import { Lock, MonitorPlay, Download, FolderOpen } from "lucide-react";
 import presentacionChicano from "@/assets/presentaciones/Presentacion-jose-chicano.pptx.asset.json";
 import presentacionSandraMar from "@/assets/presentaciones/Presentacion-sandra-salvat-y-marimar-medall.pptx.asset.json";
 import presentacionSandraMarParte2 from "@/assets/presentaciones/Presentacion-sandra-salvat-y-marimar-medall-parte-2.pdf.asset.json";
@@ -16,6 +16,8 @@ import presentacionJoseClaudioAlvarez from "@/assets/presentaciones/Presentacion
 import presentacionManelPerez from "@/assets/presentaciones/Presentacion-manel-perez.pptx.asset.json";
 import presentacionSandraSalvatJ3 from "@/assets/presentaciones/Presentacion-sandra-salvat-j3.pptx.asset.json";
 import presentacionMagdaGomez from "@/assets/presentaciones/Presentacion-magda-gomez.pptx.asset.json";
+import documentacionChicano from "@/assets/documentacion/Documentacion-adicional-jose-chicano.zip.asset.json";
+import documentacionMagda from "@/assets/documentacion/Documentacion-adicional-magda-gomes.zip.asset.json";
 
 // Presentaciones protegidas por contraseña (verificación 100% en el navegador,
 // funciona en cualquier alojamiento estático o Node sin variables de entorno).
